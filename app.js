@@ -1,13 +1,18 @@
+require("dotenv").config();
 const express = require("express");
 const { Client } = require("pg");
 
 const app = express();
 
 const client = new Client({
-  host: "rogue.db.elephantsql.com",
-  user: "mjswfhiv",
-  database: "mjswfhiv",
-  password: "KKpxxrYJNbqMYtDj7i4YiCWJWthUzp08",
+  host: process.env.HOST,
+  user: process.env.USER,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+});
+
+app.get("/", (_, res) => {
+  res.send("assignment-infiniticube");
 });
 
 app.get("/orders", (req, res) => {
